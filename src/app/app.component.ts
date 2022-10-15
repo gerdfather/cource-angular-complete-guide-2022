@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'course-angular-complete-guide-2022';
+  name = 'Gerd';
 }
