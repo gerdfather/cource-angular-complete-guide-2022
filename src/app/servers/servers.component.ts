@@ -16,6 +16,8 @@ export class ServersComponent implements OnInit {
   serverName = 'Testserver';
   servers = ['Testserver', 'Testserver 2'];
   username = '';
+  showDetails = false;
+  toggleLog = [];
 
   constructor() {
     setTimeout(() => {
@@ -34,6 +36,20 @@ export class ServersComponent implements OnInit {
   onUpdateServerName(event: any) {
     console.log(event);
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+  onDetailsToggle() {
+    this.showDetails = !this.showDetails;
+    let onOrOff = 'Details toggled ' + (this.showDetails ? 'ON' : 'OFF');
+    let now = new Date();
+    let date = now.toLocaleDateString('de-DE');
+    let hours = (now.getSeconds() < 10 ? '0' : '') + now.getHours();
+    let minutes = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+    let seconds =  (now.getSeconds() < 10 ? '0' : '') + now.getSeconds();
+    let onOrOffWhen = onOrOff + ': ' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+    this.toggleLog.push(
+      onOrOffWhen
+    );
+    console.log(onOrOffWhen);
   }
   resetUsername() {
     this.username = '';

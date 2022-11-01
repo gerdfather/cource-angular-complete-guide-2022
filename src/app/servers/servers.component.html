@@ -21,7 +21,15 @@
 </ng-template>
 
 <app-server *ngFor="let server of servers"></app-server>
-
+<hr>
+<button class="btn btn-primary" (click)="onDetailsToggle()">Toggle Display Details</button>
+<p *ngIf="showDetails">Secret password: Swordfish</p>
+<p>Button clicked at: </p>
+<p *ngFor="let logItem of toggleLog; let i = index"
+    [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'white'}"
+    [ngClass]="{'item-fifth': i >= 4}">{{ logItem }}
+</p>
+<hr>
 <input 
     type="text"
     [(ngModel)]="username"
